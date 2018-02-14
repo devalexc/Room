@@ -13,10 +13,6 @@ import android.view.ViewGroup;
 import com.alejandrocorrero.room.BR;
 import com.alejandrocorrero.room.R;
 import com.alejandrocorrero.room.databinding.FragmentItemListBinding;
-import com.alejandrocorrero.room.ui.dummy.DummyContent;
-import com.alejandrocorrero.room.ui.dummy.DummyContent.DummyItem;
-
-import java.util.List;
 
 
 public class ItemFragment extends Fragment {
@@ -46,6 +42,7 @@ public class ItemFragment extends Fragment {
         }
     }
 
+    //TODO ARREGLAR AÑADIR DATABINDING EN XML
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
