@@ -28,6 +28,10 @@ public class MainActivityViewModel extends AndroidViewModel {
         }
         return company;
     }
-
-
+    public void insertCompany(Company company) {
+        db.insertCompany(company);
+    }
+    public void deleteCompany(Company company) {
+        db.deleteCompany(company);
+    }
 }
