@@ -12,20 +12,24 @@ import android.arch.persistence.room.Update;
 import com.alejandrocorrero.room.data.model.Company;
 
 import java.util.List;
+
 @Dao
 public interface CompanyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    public void insert(Company company);
+    public long insert(Company company);
 
     @Update
-    public void update(Company company);
+    public int update(Company company);
 
     @Delete
-    public void delete(Company company);
+    public int delete(Company company);
 
     @Query("SELECT * FROM companies")
-    public List<Company> loadAllCompnay(Company company);
+    public LiveData<List<Company>> getAllCompanies();
+
+    @Query("SELECT * FROM companies WHERE CIF= :cif")
+    public LiveData<Company> getCompany(String cif);
 
     @Query("SELECT name From companies")
-    public LiveData<List<String>> loadAllName();
+    public LiveData<List<String>> getByName();
 }
