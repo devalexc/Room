@@ -11,7 +11,6 @@ import com.alejandrocorrero.room.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MainActivityViewModel viewModel;
     private final String TAG_FRAGMENT_LIST = "TAG_FRAGMENT_LIST";
 
     @Override

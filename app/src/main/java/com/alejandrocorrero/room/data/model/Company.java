@@ -6,9 +6,13 @@ import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
 import android.support.annotation.NonNull;
+import android.widget.ImageView;
 
 import com.alejandrocorrero.room.BR;
+import com.alejandrocorrero.room.R;
+import com.squareup.picasso.Picasso;
 
 @Entity(tableName = "companies", indices = {@Index(value = {"name"}, unique = true)})
 public class Company extends BaseObservable {
@@ -115,6 +119,14 @@ public class Company extends BaseObservable {
     public void setPerson(@NonNull String person) {
         this.person = person;
         notifyPropertyChanged(BR.person);
+    }
+
+    @BindingAdapter({"bind:imageUrl"})
+    public static void loadImage(ImageView view, String imageUrl) {
+        Picasso.with(view.getContext())
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(view);
     }
 
 

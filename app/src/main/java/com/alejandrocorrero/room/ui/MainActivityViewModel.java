@@ -14,24 +14,34 @@ import java.util.List;
 public class MainActivityViewModel extends AndroidViewModel {
 
 
-    private LiveData<List<Company>> company;
+    private LiveData<List<Company>> companies;
+    private LiveData<Company> company;
     private BD db;
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         db = BD.getInstance(application.getApplicationContext());
-        db.insertCompany(new Company("666666","hola","hola2","6666666","dedede@hot","test.com","yo"));
     }
 
     public LiveData<List<Company>> getCompanies() {
+        if (companies == null) {
+            companies = db.getCompanies();
+        }
+
+        return companies;
+    }
+
+    public LiveData<Company> getCompany(String CIF) {
         if (company == null) {
-            company = db.getCompanies();
+            company = db.getCompany(CIF);
         }
         return company;
     }
+
     public void insertCompany(Company company) {
         db.insertCompany(company);
     }
+
     public void deleteCompany(Company company) {
         db.deleteCompany(company);
     }

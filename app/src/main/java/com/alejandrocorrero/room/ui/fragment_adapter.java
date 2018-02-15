@@ -1,8 +1,5 @@
 package com.alejandrocorrero.room.ui;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.DataBindingUtil;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -10,17 +7,21 @@ import android.view.ViewGroup;
 import com.alejandrocorrero.room.data.model.Company;
 import com.alejandrocorrero.room.databinding.FragmentItemBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class fragment_adapter extends RecyclerView.Adapter<fragment_adapter.ViewHolder> {
+    private final Callback mcallback;
 
-    private final int mBRid;
+    public interface Callback {
+        void onClick(Company company);
+    }
 
-    private MainActivityViewModel viewModel;
+    List<Company> list = new ArrayList<>();
 
-    public fragment_adapter(int mBRid, FragmentActivity activity) {
-        viewModel = ViewModelProviders.of(activity).get(MainActivityViewModel.class);
-
-        this.mBRid = mBRid;
+    public fragment_adapter(Callback mCallback) {
+        this.mcallback=mCallback;
     }
 
     @Override
@@ -34,14 +35,21 @@ public class fragment_adapter extends RecyclerView.Adapter<fragment_adapter.View
 
     @Override
     public void onBindViewHolder(fragment_adapter.ViewHolder holder, int position) {
-        holder.bind(viewModel.getCompanies().getValue().get(position));
+        holder.bind(list.get(position));
+        holder.itemView.setOnClickListener(view -> mcallback.onClick(list.get(position)));
 
+    }
+
+    public void setList(List<Company> list) {
+
+        this.list = list;
     }
 
     @Override
     public int getItemCount() {
-        return viewModel.getCompanies().getValue().size();
+        return list.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Room</string>
+    <string name="activity_detail_lblname_text">Company Name</string>
+    <string name="acitivity_detail_cif">CIF</string>
+    <string name="activity_detail_address">Address</string>
+    <string name="activity_detail_phone">Phone</string>
+    <string name="activity_detail_email">Emaik</string>
+    <string name="activity_detail_url_logo">URL logo</string>
+    <string name="activity_detail_contact_person">Contact person</string>
 </resources>
