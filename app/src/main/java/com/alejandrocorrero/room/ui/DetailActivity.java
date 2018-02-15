@@ -12,6 +12,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DataBindingUtil.setContentView(this, R.layout.activity_detail);
+        //TODO VINCULAR DATOS CREAR UPDATE Y GUARDAR DATOS AÑADIR EMPTY VIEW
 
     }
 }
