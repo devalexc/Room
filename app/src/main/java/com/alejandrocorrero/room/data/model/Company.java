@@ -12,7 +12,7 @@ import com.alejandrocorrero.room.BR;
 
 @Entity(tableName = "companies", indices = {@Index(value = {"name"}, unique = true)})
 public class Company extends BaseObservable {
-    @PrimaryKey
+    @PrimaryKey @NonNull
     private String CIF;
     @NonNull
     private String address;
@@ -36,6 +36,9 @@ public class Company extends BaseObservable {
         this.email = email;
         this.logo = logo;
         this.person = person;
+    }
+
+    public Company() {
     }
 
     @Bindable

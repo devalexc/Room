@@ -20,6 +20,7 @@ public class MainActivityViewModel extends AndroidViewModel {
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         db = BD.getInstance(application.getApplicationContext());
+        db.insertCompany(new Company("666666","hola","hola2","6666666","dedede@hot","test.com","yo"));
     }
 
     public LiveData<List<Company>> getCompanies() {
