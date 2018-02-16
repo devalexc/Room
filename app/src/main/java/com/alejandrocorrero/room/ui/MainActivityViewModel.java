@@ -21,6 +21,8 @@ public class MainActivityViewModel extends AndroidViewModel {
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         db = BD.getInstance(application.getApplicationContext());
+        //new Thread(() -> db.insertCompany(new Company("777777", "test", "test2", "test", "dede@h", "https://developer.android.com/studio/images/hero_image_studio.png", "paco")));
+
     }
 
     public LiveData<List<Company>> getCompanies() {
@@ -40,9 +42,15 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     public void insertCompany(Company company) {
         db.insertCompany(company);
+
     }
 
     public void deleteCompany(Company company) {
         db.deleteCompany(company);
     }
+
+    public void updateCompany(Company company) {
+        db.updateCompany(company);
+    }
+
 }

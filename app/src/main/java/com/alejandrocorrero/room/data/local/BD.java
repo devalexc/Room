@@ -26,14 +26,12 @@ public class BD {
 
     private BD(Context context) {
         db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "tfg.db")
-                .allowMainThreadQueries()
-
-                .addCallback(new RoomDatabase.Callback() {
+/*                .addCallback(new RoomDatabase.Callback() {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
 
                     }
-                }).build();
+                })*/.build();
     }
 
     public LiveData<List<Company>> getCompanies() {

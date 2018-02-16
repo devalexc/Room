@@ -43,6 +43,7 @@ public class fragment_adapter extends RecyclerView.Adapter<fragment_adapter.View
     public void setList(List<Company> list) {
 
         this.list = list;
+        notifyDataSetChanged();
     }
 
     @Override

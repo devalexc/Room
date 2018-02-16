@@ -39,7 +39,6 @@ public class ItemFragment extends Fragment implements fragment_adapter.Callback 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         FragmentItemListBinding binding = FragmentItemListBinding.inflate(inflater, container, false);
         binding.setPresenter(this);
         adapter = new fragment_adapter(this);
@@ -58,6 +57,8 @@ public class ItemFragment extends Fragment implements fragment_adapter.Callback 
 
     @Override
     public void onClick(Company company) {
-        Toast.makeText(getActivity(), company.getName(), Toast.LENGTH_SHORT).show();
+        company.setName("Pipo3");
+        new Thread(() -> viewModel.updateCompany(company));
+
     }
 }
