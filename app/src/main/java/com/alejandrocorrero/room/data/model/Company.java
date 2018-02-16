@@ -8,15 +8,19 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
 import android.widget.ImageView;
 
 import com.alejandrocorrero.room.BR;
 import com.alejandrocorrero.room.R;
+import com.alejandrocorrero.room.utils.Utils;
 import com.squareup.picasso.Picasso;
 
-@Entity(tableName = "companies", indices = {@Index(value = {"name"}, unique = true)})
+@Entity(tableName = "companies", indices = {@Index(value = {"name"})})
 public class Company extends BaseObservable {
-    @PrimaryKey @NonNull
+    @PrimaryKey
+    @NonNull
     private String CIF;
     @NonNull
     private String address;
@@ -31,8 +35,9 @@ public class Company extends BaseObservable {
     @NonNull
     private String person;
 
+
     @Ignore
-    public Company(String CIF, @NonNull String address, @NonNull String name, @NonNull String phone, @NonNull String email, @NonNull String logo, @NonNull String person) {
+    public Company(@NonNull String CIF, @NonNull String address, @NonNull String name, @NonNull String phone, @NonNull String email, @NonNull String logo, @NonNull String person) {
         this.CIF = CIF;
         this.address = address;
         this.name = name;
@@ -45,6 +50,7 @@ public class Company extends BaseObservable {
     public Company() {
     }
 
+    @NonNull
     @Bindable
     public String getCIF() {
         return CIF;
@@ -128,6 +134,16 @@ public class Company extends BaseObservable {
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(view);
     }
+
+    @Bindable({"name","CIF","logo"})
+    public boolean isEnable() {
+        if((TextUtils.isEmpty(name) || !(Utils.isCifNumValid(CIF)) || !(URLUtil.isValidUrl(logo))))
+            return false;
+        else return true;
+
+    }
+
+
 
 
 }

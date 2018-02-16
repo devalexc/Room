@@ -31,7 +31,9 @@ public class BD {
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
 
                     }
-                })*/.build();
+                })*/
+                .fallbackToDestructiveMigration()
+                .build();
     }
 
     public LiveData<List<Company>> getCompanies() {

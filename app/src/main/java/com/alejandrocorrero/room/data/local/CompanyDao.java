@@ -27,7 +27,7 @@ public interface CompanyDao {
     @Query("SELECT * FROM companies")
     public LiveData<List<Company>> getAllCompanies();
 
-    @Query("SELECT * FROM companies WHERE CIF= :cif")
+    @Query("SELECT * FROM companies WHERE CIF=:cif")
     public LiveData<Company> getCompany(String cif);
 
     @Query("SELECT name From companies")

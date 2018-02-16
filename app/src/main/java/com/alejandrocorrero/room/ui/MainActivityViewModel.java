@@ -21,7 +21,7 @@ public class MainActivityViewModel extends AndroidViewModel {
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         db = BD.getInstance(application.getApplicationContext());
-        //new Thread(() -> db.insertCompany(new Company("777777", "test", "test2", "test", "dede@h", "https://developer.android.com/studio/images/hero_image_studio.png", "paco")));
+        //new Thread(() -> db.insertCompany(new Company("777777", "test", "test2", "test", "dede@h", "https://developer.android.com/studio/images/hero_image_studio.png", "paco"))).start();
 
     }
 
@@ -49,8 +49,8 @@ public class MainActivityViewModel extends AndroidViewModel {
         db.deleteCompany(company);
     }
 
-    public void updateCompany(Company company) {
-        db.updateCompany(company);
+    public int updateCompany(Company company) {
+        return db.updateCompany(company);
     }
 
 }

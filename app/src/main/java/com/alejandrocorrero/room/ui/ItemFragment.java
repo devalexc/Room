@@ -57,8 +57,11 @@ public class ItemFragment extends Fragment implements fragment_adapter.Callback 
 
     @Override
     public void onClick(Company company) {
-        company.setName("Pipo3");
-        new Thread(() -> viewModel.updateCompany(company));
+       Intent intent = new Intent(getActivity(),DetailActivity.class);
+       intent.putExtra("PrimaryKey",company.getCIF());
+       startActivity(intent);
 
     }
+
+
 }
