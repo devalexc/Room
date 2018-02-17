@@ -5,7 +5,7 @@ import android.arch.persistence.room.RoomDatabase;
 
 import com.alejandrocorrero.room.data.model.Company;
 
-@Database(entities = {Company.class}, version = 2)
+@Database(entities = {Company.class}, version = 3)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract CompanyDao companyDao();
 }

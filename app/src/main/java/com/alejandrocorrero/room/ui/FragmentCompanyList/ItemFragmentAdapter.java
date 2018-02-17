@@ -1,4 +1,4 @@
-package com.alejandrocorrero.room.ui;
+package com.alejandrocorrero.room.ui.FragmentCompanyList;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,16 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class fragment_adapter extends RecyclerView.Adapter<fragment_adapter.ViewHolder> {
+public class ItemFragmentAdapter extends RecyclerView.Adapter<ItemFragmentAdapter.ViewHolder> {
     private final Callback mcallback;
 
     public interface Callback {
-        void onClick(Company company);
+        void onItemClick(Company company);
+        void onLongItemClick(Company company);
     }
 
     List<Company> list = new ArrayList<>();
 
-    public fragment_adapter(Callback mCallback) {
+    public ItemFragmentAdapter(Callback mCallback) {
         this.mcallback=mCallback;
     }
 
@@ -34,9 +35,13 @@ public class fragment_adapter extends RecyclerView.Adapter<fragment_adapter.View
 
 
     @Override
-    public void onBindViewHolder(fragment_adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ItemFragmentAdapter.ViewHolder holder, int position) {
         holder.bind(list.get(position));
-        holder.itemView.setOnClickListener(view -> mcallback.onClick(list.get(position)));
+        holder.itemView.setOnClickListener(view -> mcallback.onItemClick(list.get(position)));
+        holder.itemView.setOnLongClickListener(view -> {
+            mcallback.onLongItemClick((list.get(position)));
+            return true;
+        });
 
     }
 

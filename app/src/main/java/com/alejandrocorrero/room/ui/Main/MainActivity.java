@@ -1,13 +1,13 @@
-package com.alejandrocorrero.room.ui;
+package com.alejandrocorrero.room.ui.Main;
 
 import android.app.FragmentManager;
-import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.alejandrocorrero.room.R;
+import com.alejandrocorrero.room.ui.FragmentCompanyList.ItemFragment;
 
 public class MainActivity extends AppCompatActivity {
 

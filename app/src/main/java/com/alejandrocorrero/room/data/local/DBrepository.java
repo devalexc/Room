@@ -1,37 +1,27 @@
 package com.alejandrocorrero.room.data.local;
 
 import android.arch.lifecycle.LiveData;
-import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
-import android.content.ContentValues;
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.alejandrocorrero.room.data.model.Company;
 
 import java.util.List;
 
-public class BD {
+public class DBrepository {
 
-    private static BD ourInstance;
+    private static DBrepository ourInstance;
     private AppDatabase db;
 
-    public static synchronized BD getInstance(Context context) {
+    public static synchronized DBrepository getInstance(Context context) {
         if (ourInstance == null) {
-            ourInstance = new BD(context.getApplicationContext());
+            ourInstance = new DBrepository(context.getApplicationContext());
         }
         return ourInstance;
     }
 
-    private BD(Context context) {
+    private DBrepository(Context context) {
         db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "tfg.db")
-/*                .addCallback(new RoomDatabase.Callback() {
-                    @Override
-                    public void onCreate(@NonNull SupportSQLiteDatabase db) {
-
-                    }
-                })*/
                 .fallbackToDestructiveMigration()
                 .build();
     }

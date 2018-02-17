@@ -7,4 +7,7 @@
     <string name="activity_detail_email">Emaik</string>
     <string name="activity_detail_url_logo">URL logo</string>
     <string name="activity_detail_contact_person">Contact person</string>
+    <string name="ItemFragment_snackbar_update">Compnay updated</string>
+    <string name="ItemFragment_snackbar_add">New Company added</string>
+    <string name="fragment_item_list_emptyView">Insert a company</string>
 </resources>

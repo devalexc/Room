@@ -22,22 +22,17 @@ public class Company extends BaseObservable {
     @PrimaryKey
     @NonNull
     private String CIF;
-    @NonNull
     private String address;
     @NonNull
     private String name;
-    @NonNull
     private String phone;
-    @NonNull
     private String email;
-    @NonNull
     private String logo;
-    @NonNull
     private String person;
 
 
     @Ignore
-    public Company(@NonNull String CIF, @NonNull String address, @NonNull String name, @NonNull String phone, @NonNull String email, @NonNull String logo, @NonNull String person) {
+    public Company(@NonNull String CIF, String address, @NonNull String name, String phone, String email, String logo, String person) {
         this.CIF = CIF;
         this.address = address;
         this.name = name;
@@ -62,12 +57,11 @@ public class Company extends BaseObservable {
     }
 
     @Bindable
-    @NonNull
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(@NonNull String address) {
+    public void setAddress(String address) {
         this.address = address;
         notifyPropertyChanged(BR.address);
     }
@@ -84,34 +78,34 @@ public class Company extends BaseObservable {
     }
 
     @Bindable
-    @NonNull
+
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(@NonNull String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
         notifyPropertyChanged(BR.phone);
     }
 
     @Bindable
-    @NonNull
+
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(@NonNull String email) {
+    public void setEmail(String email) {
         this.email = email;
         notifyPropertyChanged(BR.email);
     }
 
     @Bindable
-    @NonNull
+
     public String getLogo() {
         return logo;
     }
 
-    public void setLogo(@NonNull String logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
         notifyPropertyChanged(BR.logo);
     }
@@ -122,7 +116,7 @@ public class Company extends BaseObservable {
         return person;
     }
 
-    public void setPerson(@NonNull String person) {
+    public void setPerson(String person) {
         this.person = person;
         notifyPropertyChanged(BR.person);
     }
@@ -131,19 +125,15 @@ public class Company extends BaseObservable {
     public static void loadImage(ImageView view, String imageUrl) {
         Picasso.with(view.getContext())
                 .load(imageUrl)
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.no_image_available)
                 .into(view);
     }
 
-    @Bindable({"name","CIF","logo"})
+    @Bindable({"name", "CIF", "logo"})
     public boolean isEnable() {
-        if((TextUtils.isEmpty(name) || !(Utils.isCifNumValid(CIF)) || !(URLUtil.isValidUrl(logo))))
-            return false;
-        else return true;
+        return !(TextUtils.isEmpty(name) || !(Utils.isCifNumValid(CIF)));
 
     }
-
-
 
 
 }

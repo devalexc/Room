@@ -15,7 +15,7 @@ import java.util.List;
 
 @Dao
 public interface CompanyDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert()
     public long insert(Company company);
 
     @Update
