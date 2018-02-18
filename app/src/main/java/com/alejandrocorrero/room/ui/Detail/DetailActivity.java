@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.alejandrocorrero.room.R;
@@ -67,24 +68,26 @@ public class DetailActivity extends AppCompatActivity {
 
 
     }
-    private void updateCompany(int resultCode){
-        if(resultCode==1){
+
+    private void updateCompany(int resultCode) {
+        if (resultCode == 1) {
             Intent result = new Intent();
             setResult(RESULT_OK, result);
             finish();
-        }
-        else{
+        } else {
             Snackbar.make(mbinding.fab, "Error updating the company check all values", Snackbar.LENGTH_LONG).show();
 
         }
-    }private void insertCompany(long resultCode){
-        if(resultCode==1){
+    }
+
+    private void insertCompany(long resultCode) {
+        Log.d("mirar",String.valueOf(resultCode));
+        if (resultCode == 0) {
+            Snackbar.make(mbinding.fab, "Error inserting the company check all values", Snackbar.LENGTH_LONG).show();
+        } else {
             Intent result = new Intent();
             setResult(RESULT_OK, result);
             finish();
-        }
-        else{
-            Snackbar.make(mbinding.fab, "Error inserting the company check all values", Snackbar.LENGTH_LONG).show();
 
         }
     }

@@ -123,10 +123,19 @@ public class Company extends BaseObservable {
 
     @BindingAdapter({"bind:imageUrl"})
     public static void loadImage(ImageView view, String imageUrl) {
-        Picasso.with(view.getContext())
-                .load(imageUrl)
-                .placeholder(R.drawable.no_image_available)
-                .into(view);
+        if (!TextUtils.isEmpty(imageUrl)) {
+            Picasso.with(view.getContext())
+                    .load(imageUrl)
+                    .placeholder(R.drawable.no_image_available)
+                    .error(R.drawable.no_image_available)
+                    .into(view);
+        }else{
+            Picasso.with(view.getContext())
+                    .load(R.drawable.no_image_available)
+                    .placeholder(R.drawable.no_image_available)
+                    .error(R.drawable.no_image_available)
+                    .into(view);
+        }
     }
 
     @Bindable({"name", "CIF", "logo"})

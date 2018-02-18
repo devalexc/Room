@@ -4,12 +4,15 @@ package com.alejandrocorrero.room.ui.FragmentCompanyList;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.database.sqlite.SQLiteConstraintException;
 import android.support.annotation.NonNull;
 
 import com.alejandrocorrero.room.data.local.DBrepository;
 import com.alejandrocorrero.room.data.model.Company;
 
 import java.util.List;
+
+import io.reactivex.exceptions.OnErrorNotImplementedException;
 
 public class ItemFragmentViewModel extends AndroidViewModel {
 
@@ -29,6 +32,14 @@ public class ItemFragmentViewModel extends AndroidViewModel {
         }
 
         return companies;
+    }
+    public long insertCompany(Company company) {
+        try {
+            return db.insertCompany(company);
+        } catch (OnErrorNotImplementedException | SQLiteConstraintException e) {
+            return 0;
+        }
+
     }
 
 

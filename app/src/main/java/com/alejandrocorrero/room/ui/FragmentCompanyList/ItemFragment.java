@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -50,6 +52,8 @@ public class ItemFragment extends Fragment implements ItemFragmentAdapter.Callba
         RecyclerView recyclerView = binding.list;
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(container.getContext(), LinearLayoutManager.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext(), LinearLayoutManager.VERTICAL, false));
         viewModel.getCompanies().observe(this, this::recycle);
 
@@ -78,6 +82,8 @@ public class ItemFragment extends Fragment implements ItemFragmentAdapter.Callba
     @Override
     public void onLongItemClick(Company company) {
         new Thread(() -> viewModel.deleteCompany(company)).start();
+        Snackbar.make(binding.fab, company.getName(), Snackbar.LENGTH_LONG).setAction("undo", view -> new Thread(() -> viewModel.insertCompany(company)).start()).show();
+        //TODO PASAR A RXJAVA Y BOTON DE DESHACER
     }
 
     @Override

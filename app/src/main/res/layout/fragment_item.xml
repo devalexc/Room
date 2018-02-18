@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="5dp"
         card_view:cardElevation="8dp"
+        app:cardBackgroundColor="@color/colorList"
         card_view:cardUseCompatPadding="true"
         card_view:cardPreventCornerOverlap="false">
 

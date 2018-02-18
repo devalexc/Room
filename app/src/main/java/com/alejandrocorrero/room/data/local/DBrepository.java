@@ -3,10 +3,13 @@ package com.alejandrocorrero.room.data.local;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.database.sqlite.SQLiteConstraintException;
 
 import com.alejandrocorrero.room.data.model.Company;
 
 import java.util.List;
+
+import io.reactivex.exceptions.OnErrorNotImplementedException;
 
 public class DBrepository {
 

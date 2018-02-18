@@ -24,7 +24,7 @@ public interface CompanyDao {
     @Delete
     public int delete(Company company);
 
-    @Query("SELECT * FROM companies")
+    @Query("SELECT * FROM companies ORDER BY name")
     public LiveData<List<Company>> getAllCompanies();
 
     @Query("SELECT * FROM companies WHERE CIF=:cif")
