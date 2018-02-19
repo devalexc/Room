@@ -6,13 +6,13 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import com.alejandrocorrero.room.R;
 import com.alejandrocorrero.room.data.model.Company;
 import com.alejandrocorrero.room.databinding.ActivityDetailBinding;
 
+import io.github.tonnyl.light.Light;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -37,7 +37,7 @@ public class DetailActivity extends AppCompatActivity {
                 if (intennt.hasExtra("PrimaryKey")) {
                     String primayKey = extras.getString("PrimaryKey");
                     viewModel.getCompany(primayKey).observe(this, this::startValues);
-                    mbinding.edtCIF.setEnabled(false);
+                    mbinding.txtCif.setEnabled(false);
                 }
             }
         }
@@ -47,7 +47,6 @@ public class DetailActivity extends AppCompatActivity {
             mbinding.setModel(company);
             mbinding.executePendingBindings();
         }
-        //TODO VINCULAR DATOS CREAR UPDATE Y GUARDAR DATOS AÑADIR EMPTY VIEW Y ELIMINAR CON LONG CLICK
 
     }
 
@@ -58,7 +57,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void fabOnClick(View v) {
-        if (!mbinding.edtCIF.isEnabled()) {
+        if (!mbinding.txtCif.isEnabled()) {
             Single<Integer> result = Single.create(emitter -> emitter.onSuccess(viewModel.updateCompany(company)));
             result.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(this::updateCompany);
         } else {
@@ -75,15 +74,15 @@ public class DetailActivity extends AppCompatActivity {
             setResult(RESULT_OK, result);
             finish();
         } else {
-            Snackbar.make(mbinding.fab, "Error updating the company check all values", Snackbar.LENGTH_LONG).show();
+            Light.error(mbinding.fab, getString(R.string.DetailActivity_error_updating), Snackbar.LENGTH_LONG).show();
 
         }
     }
 
     private void insertCompany(long resultCode) {
-        Log.d("mirar",String.valueOf(resultCode));
         if (resultCode == 0) {
-            Snackbar.make(mbinding.fab, "Error inserting the company check all values", Snackbar.LENGTH_LONG).show();
+            Light.error(mbinding.fab, getString(R.string.DetailActivity_error_inserting), Snackbar.LENGTH_LONG).show();
+
         } else {
             Intent result = new Intent();
             setResult(RESULT_OK, result);

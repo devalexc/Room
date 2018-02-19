@@ -8,7 +8,9 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
+import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
 
@@ -51,7 +53,7 @@ public class Company extends BaseObservable {
         return CIF;
     }
 
-    public void setCIF(String CIF) {
+    public void setCIF(@NonNull String CIF) {
         this.CIF = CIF;
         notifyPropertyChanged(BR.cIF);
     }
@@ -111,7 +113,6 @@ public class Company extends BaseObservable {
     }
 
     @Bindable
-    @NonNull
     public String getPerson() {
         return person;
     }
@@ -121,6 +122,7 @@ public class Company extends BaseObservable {
         notifyPropertyChanged(BR.person);
     }
 
+    @Ignore
     @BindingAdapter({"bind:imageUrl"})
     public static void loadImage(ImageView view, String imageUrl) {
         if (!TextUtils.isEmpty(imageUrl)) {
@@ -129,7 +131,7 @@ public class Company extends BaseObservable {
                     .placeholder(R.drawable.no_image_available)
                     .error(R.drawable.no_image_available)
                     .into(view);
-        }else{
+        } else {
             Picasso.with(view.getContext())
                     .load(R.drawable.no_image_available)
                     .placeholder(R.drawable.no_image_available)
@@ -138,11 +140,125 @@ public class Company extends BaseObservable {
         }
     }
 
-    @Bindable({"name", "CIF", "logo"})
-    public boolean isEnable() {
-        return !(TextUtils.isEmpty(name) || !(Utils.isCifNumValid(CIF)));
+    @Ignore
+    @Bindable({"name", "CIF"})
+    public int getEnable() {
+        if ((TextUtils.isEmpty(name) || !(Utils.isCifNumValid(CIF)))) {
+            return View.INVISIBLE;
+        } else {
+            return View.VISIBLE;
+        }
+
 
     }
 
+    @Ignore
+    @BindingAdapter("app:errorText")
+    public static void setErrorMessage(TextInputLayout view, String errorMessage) {
+        view.setError(errorMessage);
+    }
+
+    @Ignore
+    @Bindable
+    public String getErrorCif() {
+        if (isCifError()) {
+            return "Incorrect CIF";
+        } else {
+            return null;
+        }
+    }
+
+    @Ignore
+    @Bindable({"CIF"})
+    public boolean isCifError() {
+        if (!Utils.isCifNumValid(CIF)) {
+            notifyPropertyChanged(BR.errorCif);
+        }
+        return !Utils.isCifNumValid(CIF);
+
+    }
+
+    @Ignore
+    @Bindable
+    public String getErrorName() {
+        if (isNameError()) {
+            return "Cant be empty";
+        } else {
+            return null;
+        }
+    }
+
+    @Ignore
+    @Bindable({"name"})
+    public boolean isNameError() {
+        if (TextUtils.isEmpty(name)) {
+            notifyPropertyChanged(BR.errorName);
+        }
+        return TextUtils.isEmpty(name);
+
+    }
+
+    @Ignore
+    @Bindable
+    public String getErrorPhone() {
+        if (isPhoneError()) {
+            return "Incorrect Phone";
+        } else {
+            return null;
+        }
+    }
+
+    @Ignore
+    @Bindable({"phone"})
+    public boolean isPhoneError() {
+        if (phone == null) {
+            return true;
+        }
+        if (phone.length() < 9 || phone.length() > 9) {
+            notifyPropertyChanged(BR.errorPhone);
+        }
+        return (phone.length() < 9 || phone.length() > 9);
+
+    }
+
+    @Ignore
+    @Bindable
+    public String getErrorEmail() {
+        if (isEmailError()) {
+            return "Incorrect Email";
+        } else {
+            return null;
+        }
+    }
+
+    @Ignore
+    @Bindable({"email"})
+    public boolean isEmailError() {
+        if (!(!TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())) {
+            notifyPropertyChanged(BR.errorEmail);
+        }
+        return !(!TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
+
+    }
+
+    @Ignore
+    @Bindable
+    public String getErrorLogo() {
+        if (isLogoError()) {
+            return "Incorrect Logo";
+        } else {
+            return null;
+        }
+    }
+
+    @Ignore
+    @Bindable({"logo"})
+    public boolean isLogoError() {
+        if (!URLUtil.isValidUrl(logo)) {
+            notifyPropertyChanged(BR.errorLogo);
+        }
+        return !URLUtil.isValidUrl(logo);
+
+    }
 
 }

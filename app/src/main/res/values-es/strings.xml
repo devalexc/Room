@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Room</string>
+    <string name="activity_detail_lblname_text">Company Name</string>
+    <string name="acitivity_detail_cif">CIF</string>
+    <string name="activity_detail_address">Dirección</string>
+    <string name="activity_detail_phone">Teléfono</string>
+    <string name="activity_detail_email">Email</string>
+    <string name="activity_detail_url_logo">Dirección logo</string>
+    <string name="activity_detail_contact_person">Persona de contacto</string>
+    <string name="ItemFragment_snackbar_update">Empresa actualizada</string>
+    <string name="ItemFragment_snackbar_add">Nueva empresa añadida</string>
+    <string name="fragment_item_list_emptyView">Inserta una empresa</string>
+    <string name="fragment_item_inserted">"Empresa %1$s eliminada"</string>
+    <string name="fragment_item_undo">Deshacer</string>
+    <string name="activity_detail_txtPerson">Persona de Contacto</string>
+    <string name="activity_detail_txtLogo">Logo</string>
+    <string name="activity_detail_txtEmail">Email</string>
+    <string name="activity_detail_txtPhone">Teléfono</string>
+    <string name="activity_detail_txtAddress">Address</string>
+    <string name="activity_detail_txtCif">CIF</string>
+    <string name="activity_detail_txtName">Nombre</string>
+    <string name="DetailActivity_error_inserting">Error insertando la empresa, el CIF ya existe</string>
+    <string name="DetailActivity_error_updating">Error actualizando la empresa, revisa todos los campos</string>
+</resources>

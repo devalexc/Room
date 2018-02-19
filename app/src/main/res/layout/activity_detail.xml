@@ -8,6 +8,7 @@
         <variable
             name="model"
             type="com.alejandrocorrero.room.data.model.Company" />
+
         <variable
             name="presenter"
             type="com.alejandrocorrero.room.ui.Detail.DetailActivity" />
@@ -22,10 +23,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="fill_vertical"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             android:fillViewport="true">
 
             <android.support.constraint.ConstraintLayout
@@ -33,275 +34,242 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/lblName"
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:labelFor="@id/edtName"
-                    android:text="@string/activity_detail_lblname_text"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:errorEnabled="@{model.nameError}"
+                    app:errorText="@{model.errorName}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivName"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <EditText
-                    android:id="@+id/edtName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:ems="10"
-                    android:hint="@string/activity_detail_lblname_text"
-                    android:inputType="textPersonName"
-                    android:text="@={model.name}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivName"
-                    app:layout_constraintTop_toBottomOf="@+id/lblName" />
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/txtName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/activity_detail_txtName"
+                        android:text="@={model.name}" />
 
+                </android.support.design.widget.TextInputLayout>
 
                 <ImageView
                     android:id="@+id/ivName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
                     android:scaleType="centerCrop"
-                    app:layout_constraintBottom_toBottomOf="@+id/edtName"
+                    app:layout_constraintBottom_toTopOf="@+id/tilCif"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lblName"
+                    app:layout_constraintTop_toTopOf="@+id/tilName"
                     app:srcCompat="@drawable/ic_business_black_24dp"
                     tools:ignore="ContentDescription" />
 
-                <TextView
-                    android:id="@+id/lblCIF"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:labelFor="@id/edtCIF"
-                    android:text="@string/acitivity_detail_cif"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/edtName" />
 
-                <EditText
-                    android:id="@+id/edtCIF"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilCif"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:text="@={model.CIF}"
-                    android:hint="@string/acitivity_detail_cif"
-                    android:inputType="textPersonName"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:errorEnabled="@{model.cifError}"
+                    app:errorText="@{model.errorCif}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/lblCIF" />
+                    app:layout_constraintTop_toBottomOf="@+id/tilName">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/txtCif"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/activity_detail_txtCif"
+                        android:text="@={model.CIF}" />
+
+                </android.support.design.widget.TextInputLayout>
 
                 <ImageView
                     android:id="@+id/ivCIF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/edtCIF"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:layout_constraintBottom_toTopOf="@+id/tilAddress"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/edtCIF"
+                    app:layout_constraintTop_toTopOf="@+id/tilCif"
                     app:srcCompat="@drawable/ic_business_center_black_24dp"
                     tools:ignore="ContentDescription" />
 
-
-                <TextView
-                    android:id="@+id/lblAddress"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilAddress"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/activity_detail_address"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/edtCIF" />
+                    app:layout_constraintTop_toBottomOf="@+id/tilCif">
 
-                <EditText
-                    android:id="@+id/edtAddress"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:text="@={model.address}"
-                    android:hint="@string/activity_detail_address"
-                    android:inputType="textPersonName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
-
-                <TextView
-                    android:id="@+id/lblPhone"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:labelFor="@id/edtPhone"
-                    android:text="@string/activity_detail_phone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/edtAddress" />
-
-                <EditText
-                    android:id="@+id/edtPhone"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:text="@={model.phone}"
-                    android:hint="@string/activity_detail_phone"
-                    android:inputType="phone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/lblPhone" />
-
-                <TextView
-                    android:id="@+id/lblEmail"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:labelFor="@+id/edtEmail"
-                    android:text="@string/activity_detail_email"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/edtPhone" />
-
-                <EditText
-                    android:id="@+id/edtEmail"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@={model.email}"
-                    android:ems="10"
-                    android:hint="@string/activity_detail_email"
-                    android:inputType="textEmailAddress"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
-
-                <TextView
-                    android:id="@+id/lblLogo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:labelFor="@+id/edtLogo"
-                    android:text="@string/activity_detail_url_logo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
-
-                <EditText
-                    android:id="@+id/edtLogo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@={model.logo}"
-                    android:ems="10"
-                    android:hint="@string/activity_detail_url_logo"
-                    android:inputType="textPersonName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/lblLogo" />
-
-                <TextView
-                    android:id="@+id/lblPerson"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:labelFor="@+id/edtPerson"
-                    android:text="@string/activity_detail_contact_person"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/edtLogo" />
-
-                <EditText
-                    android:id="@+id/edtPerson"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@={model.person}"
-                    android:ems="10"
-                    android:hint="@string/activity_detail_contact_person"
-                    android:inputType="textPersonName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
-                    app:layout_constraintTop_toBottomOf="@+id/lblPerson" />
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/txtAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/activity_detail_txtAddress"
+                        android:text="@={model.address}" />
+                </android.support.design.widget.TextInputLayout>
 
 
                 <ImageView
                     android:id="@+id/ivAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintBottom_toTopOf="@+id/lblPhone"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:layout_constraintBottom_toTopOf="@+id/tilPhone"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lblAddress"
+                    app:layout_constraintTop_toTopOf="@+id/tilAddress"
                     app:srcCompat="@drawable/ic_location_on_black_24dp"
                     tools:ignore="ContentDescription" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:errorEnabled="@{model.phoneError}"
+                    app:errorText="@{model.errorPhone}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
+                    app:layout_constraintTop_toBottomOf="@+id/tilAddress">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/txtPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/activity_detail_txtPhone"
+                        android:inputType="phone"
+                        android:text="@={model.phone}" />
+                </android.support.design.widget.TextInputLayout>
 
                 <ImageView
                     android:id="@+id/ivPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/edtPhone"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:layout_constraintBottom_toTopOf="@+id/tilEmail"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lblPhone"
+                    app:layout_constraintTop_toTopOf="@+id/tilPhone"
                     app:srcCompat="@drawable/ic_phone_black_24dp"
                     tools:ignore="ContentDescription" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:errorEnabled="@{model.emailError}"
+                    app:errorText="@{model.errorEmail}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
+                    app:layout_constraintTop_toBottomOf="@+id/tilPhone">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/txtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/activity_detail_txtEmail"
+                        android:inputType="textEmailAddress"
+                        android:text="@={model.email}" />
+                </android.support.design.widget.TextInputLayout>
 
                 <ImageView
                     android:id="@+id/ivEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toTopOf="@+id/lblLogo"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:layout_constraintBottom_toTopOf="@+id/tilLogo"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/edtEmail"
+                    app:layout_constraintTop_toTopOf="@+id/tilEmail"
                     app:srcCompat="@drawable/ic_email_black_24dp"
                     tools:ignore="ContentDescription" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilLogo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:errorEnabled="@{model.logoError}"
+                    app:errorText="@{model.errorLogo}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
+                    app:layout_constraintTop_toBottomOf="@+id/tilEmail">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/txtLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/activity_detail_txtLogo"
+                        android:inputType="textUri"
+                        android:text="@={model.logo}" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilPerson"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivCIF"
+                    app:layout_constraintTop_toBottomOf="@+id/tilLogo">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/txtPerson"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/activity_detail_txtPerson"
+                        android:inputType="textPersonName"
+                        android:text="@={model.person}" />
+                </android.support.design.widget.TextInputLayout>
+
 
                 <ImageView
                     android:id="@+id/ivLogo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/edtLogo"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:layout_constraintBottom_toTopOf="@+id/tilPerson"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/edtLogo"
+                    app:layout_constraintTop_toTopOf="@+id/tilLogo"
                     app:srcCompat="@drawable/ic_photo_black_24dp"
                     tools:ignore="ContentDescription" />
 
@@ -309,12 +277,12 @@
                     android:id="@+id/ivPerson"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/edtPerson"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    app:layout_constraintBottom_toBottomOf="@+id/tilPerson"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lblPerson"
+                    app:layout_constraintTop_toTopOf="@+id/tilPerson"
                     app:srcCompat="@drawable/ic_person_black_24dp"
                     tools:ignore="ContentDescription" />
 
@@ -328,12 +296,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:enabled="@{model.enable}"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
             android:onClick="@{presenter::fabOnClick}"
-
             android:src="@drawable/ic_save_white_24dp"
+            android:visibility="@{model.enable}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </android.support.design.widget.CoordinatorLayout>

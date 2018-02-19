@@ -13,14 +13,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.alejandrocorrero.room.R;
 import com.alejandrocorrero.room.data.model.Company;
 import com.alejandrocorrero.room.databinding.FragmentItemListBinding;
 import com.alejandrocorrero.room.ui.Detail.DetailActivity;
-
 import java.util.List;
-
+import io.github.tonnyl.light.Light;
 import static android.app.Activity.RESULT_OK;
 
 
@@ -31,8 +29,6 @@ public class ItemFragment extends Fragment implements ItemFragmentAdapter.Callba
     private ItemFragmentAdapter adapter;
     private FragmentItemListBinding binding;
 
-    public ItemFragment() {
-    }
 
 
     @Override
@@ -55,12 +51,12 @@ public class ItemFragment extends Fragment implements ItemFragmentAdapter.Callba
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(container.getContext(), LinearLayoutManager.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext(), LinearLayoutManager.VERTICAL, false));
-        viewModel.getCompanies().observe(this, this::recycle);
+        viewModel.getCompanies().observe(this, this::setupRecycleList);
 
         return binding.getRoot();
     }
 
-    private void recycle(List<Company> companies) {
+    private void setupRecycleList(List<Company> companies) {
         adapter.setList(companies);
         binding.lblEmpty.setVisibility(companies.size() == 0 ? View.VISIBLE : View.INVISIBLE);
 
@@ -82,17 +78,19 @@ public class ItemFragment extends Fragment implements ItemFragmentAdapter.Callba
     @Override
     public void onLongItemClick(Company company) {
         new Thread(() -> viewModel.deleteCompany(company)).start();
-        Snackbar.make(binding.fab, company.getName(), Snackbar.LENGTH_LONG).setAction("undo", view -> new Thread(() -> viewModel.insertCompany(company)).start()).show();
-        //TODO PASAR A RXJAVA Y BOTON DE DESHACER
+        Light.success(binding.fab, String.format(getResources().getString(R.string.fragment_item_inserted), company.getName()), Snackbar.LENGTH_LONG)
+                .setAction(getResources().getString(R.string.fragment_item_undo), v -> new Thread(() -> viewModel.insertCompany(company)).start()).show();
+
+
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == 1) {
-            Snackbar.make(binding.fab, R.string.ItemFragment_snackbar_update, Snackbar.LENGTH_LONG).show();
+            Light.success(binding.fab, getResources().getString(R.string.ItemFragment_snackbar_update), Snackbar.LENGTH_SHORT).show();
         }
         if (resultCode == RESULT_OK && requestCode == 2) {
-            Snackbar.make(binding.fab, R.string.ItemFragment_snackbar_add, Snackbar.LENGTH_LONG).show();
+            Light.success(binding.fab, getResources().getString(R.string.ItemFragment_snackbar_add), Snackbar.LENGTH_SHORT).show();
         }
     }
 }

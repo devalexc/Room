@@ -17,7 +17,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DataBindingUtil.setContentView(this, R.layout.activity_main);
+        fragManager();
+    }
 
+    private void fragManager() {
         FragmentManager fragmentManager = getFragmentManager();
         if (fragmentManager.findFragmentByTag(TAG_FRAGMENT_LIST) == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

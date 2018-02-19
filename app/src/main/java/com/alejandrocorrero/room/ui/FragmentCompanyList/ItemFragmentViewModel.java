@@ -26,14 +26,14 @@ public class ItemFragmentViewModel extends AndroidViewModel {
 
     }
 
-    public LiveData<List<Company>> getCompanies() {
+    LiveData<List<Company>> getCompanies() {
         if (companies == null) {
             companies = db.getCompanies();
         }
 
         return companies;
     }
-    public long insertCompany(Company company) {
+    long insertCompany(Company company) {
         try {
             return db.insertCompany(company);
         } catch (OnErrorNotImplementedException | SQLiteConstraintException e) {
@@ -43,7 +43,7 @@ public class ItemFragmentViewModel extends AndroidViewModel {
     }
 
 
-    public void deleteCompany(Company company) {
+    void deleteCompany(Company company) {
         db.deleteCompany(company);
     }
 

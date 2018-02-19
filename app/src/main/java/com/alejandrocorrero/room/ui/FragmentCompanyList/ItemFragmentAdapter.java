@@ -12,17 +12,18 @@ import java.util.List;
 
 
 public class ItemFragmentAdapter extends RecyclerView.Adapter<ItemFragmentAdapter.ViewHolder> {
-    private final Callback mcallback;
+    private final Callback mCallback;
 
     public interface Callback {
         void onItemClick(Company company);
+
         void onLongItemClick(Company company);
     }
 
-    List<Company> list = new ArrayList<>();
+    private List<Company> list = new ArrayList<>();
 
-    public ItemFragmentAdapter(Callback mCallback) {
-        this.mcallback=mCallback;
+    ItemFragmentAdapter(Callback mCallback) {
+        this.mCallback = mCallback;
     }
 
     @Override
@@ -37,15 +38,15 @@ public class ItemFragmentAdapter extends RecyclerView.Adapter<ItemFragmentAdapte
     @Override
     public void onBindViewHolder(ItemFragmentAdapter.ViewHolder holder, int position) {
         holder.bind(list.get(position));
-        holder.itemView.setOnClickListener(view -> mcallback.onItemClick(list.get(position)));
+        holder.itemView.setOnClickListener(view -> mCallback.onItemClick(list.get(position)));
         holder.itemView.setOnLongClickListener(view -> {
-            mcallback.onLongItemClick((list.get(position)));
+            mCallback.onLongItemClick((list.get(position)));
             return true;
         });
 
     }
 
-    public void setList(List<Company> list) {
+    void setList(List<Company> list) {
 
         this.list = list;
         notifyDataSetChanged();
@@ -57,18 +58,18 @@ public class ItemFragmentAdapter extends RecyclerView.Adapter<ItemFragmentAdapte
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         private final FragmentItemBinding binding;
 
 
-        public ViewHolder(FragmentItemBinding binding) {
+        ViewHolder(FragmentItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 
         }
 
-        public void bind(Company company) {
+        void bind(Company company) {
             binding.setItem(company);
             binding.executePendingBindings();
         }

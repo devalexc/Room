@@ -4,10 +4,21 @@
     <string name="acitivity_detail_cif">CIF</string>
     <string name="activity_detail_address">Address</string>
     <string name="activity_detail_phone">Phone</string>
-    <string name="activity_detail_email">Emaik</string>
+    <string name="activity_detail_email">Email</string>
     <string name="activity_detail_url_logo">URL logo</string>
     <string name="activity_detail_contact_person">Contact person</string>
     <string name="ItemFragment_snackbar_update">Compnay updated</string>
     <string name="ItemFragment_snackbar_add">New Company added</string>
     <string name="fragment_item_list_emptyView">Insert a company</string>
+    <string name="fragment_item_inserted">"Company %1$s removed"</string>
+    <string name="fragment_item_undo">Undo</string>
+    <string name="activity_detail_txtPerson">Person</string>
+    <string name="activity_detail_txtLogo">Logo</string>
+    <string name="activity_detail_txtEmail">Email</string>
+    <string name="activity_detail_txtPhone">Phone</string>
+    <string name="activity_detail_txtAddress">Address</string>
+    <string name="activity_detail_txtCif">CIF</string>
+    <string name="activity_detail_txtName">Name</string>
+    <string name="DetailActivity_error_inserting">Error inserting the company, CIF already exist</string>
+    <string name="DetailActivity_error_updating">Error updating the company check all values</string>
 </resources>
