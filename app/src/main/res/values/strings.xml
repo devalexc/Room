@@ -21,4 +21,10 @@
     <string name="activity_detail_txtName">Name</string>
     <string name="DetailActivity_error_inserting">Error inserting the company, CIF already exist</string>
     <string name="DetailActivity_error_updating">Error updating the company check all values</string>
+    <string name="Company_errorcif">Incorrect CIF</string>
+    <string name="company_errorName">Cant be empty</string>
+    <string name="company_error_phone">Incorrect Phone</string>
+    <string name="company_error_email">Incorrect Email</string>
+    <string name="company_error_logo">Incorrect Logo</string>
+
 </resources>

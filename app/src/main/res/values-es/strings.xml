@@ -16,9 +16,15 @@
     <string name="activity_detail_txtLogo">Logo</string>
     <string name="activity_detail_txtEmail">Email</string>
     <string name="activity_detail_txtPhone">Teléfono</string>
-    <string name="activity_detail_txtAddress">Address</string>
+    <string name="activity_detail_txtAddress">Dirección</string>
     <string name="activity_detail_txtCif">CIF</string>
     <string name="activity_detail_txtName">Nombre</string>
     <string name="DetailActivity_error_inserting">Error insertando la empresa, el CIF ya existe</string>
     <string name="DetailActivity_error_updating">Error actualizando la empresa, revisa todos los campos</string>
+    <string name="binding_error_cif">CIF incorrecto</string>
+    <string name="company_errorcif">CIF incorrecto</string>
+    <string name="company_errorName">No puede estar vacio</string>
+    <string name="company_error_phone">Telefono incorrecto</string>
+    <string name="company_error_email">Email incorrecto</string>
+    <string name="company_error_logo">Logo incorrecto</string>
 </resources>

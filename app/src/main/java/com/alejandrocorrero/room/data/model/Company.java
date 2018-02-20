@@ -21,6 +21,7 @@ import com.squareup.picasso.Picasso;
 
 @Entity(tableName = "companies", indices = {@Index(value = {"name"})})
 public class Company extends BaseObservable {
+
     @PrimaryKey
     @NonNull
     private String CIF;
@@ -154,15 +155,20 @@ public class Company extends BaseObservable {
 
     @Ignore
     @BindingAdapter("app:errorText")
-    public static void setErrorMessage(TextInputLayout view, String errorMessage) {
-        view.setError(errorMessage);
+    public static void setErrorMessage(TextInputLayout view, Integer errorMessage) {
+        if (errorMessage != null) {
+            view.setError(view.getResources().getString(errorMessage));
+        } else {
+            view.setError(null);
+        }
+
     }
 
     @Ignore
     @Bindable
-    public String getErrorCif() {
+    public Integer getErrorCif() {
         if (isCifError()) {
-            return "Incorrect CIF";
+            return R.string.company_errorcif;
         } else {
             return null;
         }
@@ -180,9 +186,9 @@ public class Company extends BaseObservable {
 
     @Ignore
     @Bindable
-    public String getErrorName() {
+    public Integer getErrorName() {
         if (isNameError()) {
-            return "Cant be empty";
+            return R.string.company_errorName;
         } else {
             return null;
         }
@@ -200,9 +206,9 @@ public class Company extends BaseObservable {
 
     @Ignore
     @Bindable
-    public String getErrorPhone() {
+    public Integer getErrorPhone() {
         if (isPhoneError()) {
-            return "Incorrect Phone";
+            return R.string.company_error_phone;
         } else {
             return null;
         }
@@ -223,9 +229,9 @@ public class Company extends BaseObservable {
 
     @Ignore
     @Bindable
-    public String getErrorEmail() {
+    public Integer getErrorEmail() {
         if (isEmailError()) {
-            return "Incorrect Email";
+            return R.string.company_error_email;
         } else {
             return null;
         }
@@ -243,9 +249,9 @@ public class Company extends BaseObservable {
 
     @Ignore
     @Bindable
-    public String getErrorLogo() {
+    public Integer getErrorLogo() {
         if (isLogoError()) {
-            return "Incorrect Logo";
+            return R.string.company_error_logo;
         } else {
             return null;
         }
