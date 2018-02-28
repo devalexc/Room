@@ -10,12 +10,7 @@ public class Utils {
         }
        // String[] arraycif = {"A","B","C","D","E","F","G","H","J","N","P","Q","R","S","U","V","W"};
         cif = cif.toUpperCase();
-        if (cif.length() != 9) {
-            return false;
-        }
-        else{
-            return true;
-        }
+        return cif.length() == 9;
      /*   String Cifnumber = cif.substring(1, cif.length());
         String Cifletter = cif.substring(0, 1);
         try {

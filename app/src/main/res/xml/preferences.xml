@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="prefDays"
+        android:title="Visist notice each"
+        android:summary="test"
+        android:dialogTitle="@string/prefDays" />
+
+    <ListPreference
+        android:key="prefDefaultFrag"
+        android:title="@string/prefDefaultFrag"
+        android:dialogTitle="@string/prefDefaultFrag"
+        android:summary="@string/prefDefaultFrag"
+        android:entries="@array/frags_entries"
+        android:entryValues="@array/frags_values"
+        android:defaultValue="@array/frag_default" />
+</PreferenceScreen>

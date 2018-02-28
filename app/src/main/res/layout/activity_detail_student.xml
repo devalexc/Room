@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="model"
-            type="com.alejandrocorrero.room.data.model.Company" />
+            type="com.alejandrocorrero.room.data.model.Student" />
 
         <variable
             name="presenter"
-            type="com.alejandrocorrero.room.ui.FragmentCompanyList.Detail.DetailActivity" />
+            type="com.alejandrocorrero.room.ui.Student.Detail.DetailStudentActivity" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout

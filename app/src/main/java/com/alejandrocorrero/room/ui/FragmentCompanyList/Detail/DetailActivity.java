@@ -1,4 +1,4 @@
-package com.alejandrocorrero.room.ui.Detail;
+package com.alejandrocorrero.room.ui.FragmentCompanyList.Detail;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.view.View;
 import com.alejandrocorrero.room.R;
 import com.alejandrocorrero.room.data.model.Company;
 import com.alejandrocorrero.room.databinding.ActivityDetailBinding;
+
 
 import io.github.tonnyl.light.Light;
 import io.reactivex.Single;

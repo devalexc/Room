@@ -3,6 +3,7 @@
     package="com.alejandrocorrero.room">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Detail.DetailActivity" android:parentActivityName=".ui.Main.MainActivity"></activity>
+        <activity
+            android:name=".ui.FragmentCompanyList.Detail.DetailActivity"
+            android:parentActivityName=".ui.Main.MainActivity" />
+        <activity android:name=".ui.Main.PreferencesActivity" />
+        <activity
+            android:name=".ui.About.AboutActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+        <activity android:name=".ui.Student.Detail.DetailStudentActivity"></activity>
     </application>
 
 </manifest>

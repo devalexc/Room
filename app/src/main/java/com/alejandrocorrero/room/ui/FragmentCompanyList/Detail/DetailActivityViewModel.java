@@ -1,4 +1,4 @@
-package com.alejandrocorrero.room.ui.Detail;
+package com.alejandrocorrero.room.ui.FragmentCompanyList.Detail;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;

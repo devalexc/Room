@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Room.iml" filepath="$PROJECT_DIR$/Room.iml" />
       <module fileurl="file://C:\AndroidProyectos\RoomReal\Room.iml" filepath="C:\AndroidProyectos\RoomReal\Room.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RoomReal.iml" filepath="$PROJECT_DIR$/RoomReal.iml" />
+      <module fileurl="file://C:\Users\er_al\AndroidStudioProjects\Room\RoomReal.iml" filepath="C:\Users\er_al\AndroidStudioProjects\Room\RoomReal.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\AndroidProyectos\RoomReal\app\app.iml" filepath="C:\AndroidProyectos\RoomReal\app\app.iml" />
     </modules>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="frags_entries" >
+        <item>Next Visits</item>
+        <item>Visits per Student</item>
+        <item>Students</item>
+        <item>Companies</item>
+    </string-array>
+    <string-array name="frags_values">
+        <item>NV</item>
+        <item>VS</item>
+        <item>S</item>
+        <item>C</item>
+    </string-array>
+    <string-array name="frag_default">NV</string-array>
+</resources>

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteConstraintException;
 
 import com.alejandrocorrero.room.data.model.Company;
+import com.alejandrocorrero.room.data.model.Student;
 
 import java.util.List;
 
@@ -40,7 +41,9 @@ public class DBrepository {
     public long insertCompany(Company company) {
         return db.companyDao().insert(company);
     }
-
+    public long insertStudent(Student student) {
+        return db.studentDao().insert(student);
+    }
     public int updateCompany(Company company) {
         return db.companyDao().update(company);
     }
@@ -51,6 +54,13 @@ public class DBrepository {
 
     public AppDatabase getDb() {
         return db;
+    }
+
+    public LiveData<List<Student>> getStudents() {
+        return db.studentDao().getAllStudent();
+    }
+    public int deleteStudent(Student student) {
+        return db.studentDao().delete(student);
     }
 
 }

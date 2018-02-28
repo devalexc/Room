@@ -26,5 +26,17 @@
     <string name="company_error_phone">Incorrect Phone</string>
     <string name="company_error_email">Incorrect Email</string>
     <string name="company_error_logo">Incorrect Logo</string>
+    <string name="activity_main_mnuPreferences">preferences</string>
+    <string name="prefDefaultFrag">Default screen</string>
+    <string name="mnuStudents">Students</string>
+    <string name="mnuCompanies">Companies</string>
+    <string name="mnuVisits">Visits</string>
+    <string name="mnuNextVisits">Next visits</string>
+    <string name="prefDays">Visits test</string>
+    <string name="activity_main_mnuAboutIt">About it</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_students_list_emptyView">Insert a student</string>
 
 </resources>

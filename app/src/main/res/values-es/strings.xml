@@ -27,4 +27,12 @@
     <string name="company_error_phone">Telefono incorrecto</string>
     <string name="company_error_email">Email incorrecto</string>
     <string name="company_error_logo">Logo incorrecto</string>
+    <string name="activity_main_mnuPreferences">preferences</string>
+    <string name="prefDefaultFrag">Default screen</string>
+    <string name="mnuStudents">Students</string>
+    <string name="mnuCompanies">Companies</string>
+    <string name="mnuVisits">Visits</string>
+    <string name="mnuNextVisits">Next visits</string>
+    <string name="activity_main_mnuAboutIt">About it</string>
+    <string name="fragment_students_list_emptyView">Insert a student</string>
 </resources>
