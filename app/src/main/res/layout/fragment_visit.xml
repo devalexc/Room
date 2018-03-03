@@ -6,7 +6,7 @@
 
         <variable
             name="presenter"
-            type="com.alejandrocorrero.room.ui.student.FragmentStudentsList" />
+            type="com.alejandrocorrero.room.ui.visit.VisitFragment" />
     </data>
 
 
@@ -44,7 +44,7 @@
             android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginStart="@dimen/default_margin"
             android:onClick="@{presenter::fabOnClick}"
-            android:text="@string/fragment_students_list_emptyView"
+            android:text="@string/fragment_visits_list_emptyView"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

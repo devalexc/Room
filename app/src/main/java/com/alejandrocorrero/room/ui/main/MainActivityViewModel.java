@@ -1,4 +1,4 @@
-package com.alejandrocorrero.room.ui.Main;
+package com.alejandrocorrero.room.ui.main;
 
 
 import android.app.Application;
@@ -9,7 +9,9 @@ import android.support.annotation.NonNull;
 
 import com.alejandrocorrero.room.data.local.DBrepository;
 import com.alejandrocorrero.room.data.model.Company;
+import com.alejandrocorrero.room.data.model.NextVisits;
 import com.alejandrocorrero.room.data.model.Student;
+import com.alejandrocorrero.room.data.model.Visit;
 
 import java.util.List;
 
@@ -21,13 +23,21 @@ public class MainActivityViewModel extends AndroidViewModel {
     private LiveData<List<Company>> companies;
     private LiveData<List<Student>> students;
     private DBrepository db;
+    private LiveData<List<Visit>> visits;
+    private LiveData<List<NextVisits>> nextVisits;
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         db = DBrepository.getInstance(application.getApplicationContext());
 
     }
+    public LiveData<List<Visit>> getVisits() {
+        if (visits == null) {
+            visits = db.getVisits();
+        }
 
+        return visits;
+    }
     public LiveData<List<Company>> getCompanies() {
         if (companies == null) {
             companies = db.getCompanies();
@@ -35,7 +45,6 @@ public class MainActivityViewModel extends AndroidViewModel {
 
         return companies;
     }
-
     public LiveData<List<Student>> getStudents() {
         if (students == null) {
             students = db.getStudents();
@@ -60,14 +69,32 @@ public class MainActivityViewModel extends AndroidViewModel {
         }
 
     }
+    public long insertVisit(Visit visit) {
+        try {
+            return db.insertVisit(visit);
+        } catch (OnErrorNotImplementedException | SQLiteConstraintException e) {
+            return 0;
+        }
+
+    }
 
 
     public void deleteCompany(Company company) {
         db.deleteCompany(company);
     }
-
     public void deleteStudent(Student student) {
         db.deleteStudent(student);
+    }
+    public void deleteVisit(Visit visit) {
+        db.deleteVisit(visit);
+    }
+
+    public LiveData<List<NextVisits>> getNextVisits(){
+        if (nextVisits == null) {
+            nextVisits = db.getNextVisits();
+        }
+
+        return nextVisits;
     }
 
 

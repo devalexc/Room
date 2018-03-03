@@ -11,7 +11,7 @@
 
         <variable
             name="presenter"
-            type="com.alejandrocorrero.room.ui.FragmentCompanyList.Detail.DetailActivity" />
+            type="com.alejandrocorrero.room.ui.company.detail.DetailActivity" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout

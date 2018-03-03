@@ -7,7 +7,7 @@
 
         <variable
             name="presenter"
-            type="com.alejandrocorrero.room.ui.FragmentCompanyList.ItemFragment" />
+            type="com.alejandrocorrero.room.ui.company.CompanyFragment" />
     </data>
 
 
@@ -32,7 +32,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:context="com.alejandrocorrero.room.ui.FragmentCompanyList.ItemFragment"
+                tools:context="com.alejandrocorrero.room.ui.company.CompanyFragment"
                 tools:listitem="@layout/fragment_item" />
 
             <TextView

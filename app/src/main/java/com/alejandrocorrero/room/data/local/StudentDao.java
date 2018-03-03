@@ -9,6 +9,7 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.alejandrocorrero.room.data.model.Company;
+import com.alejandrocorrero.room.data.model.NextVisits;
 import com.alejandrocorrero.room.data.model.Student;
 
 import java.util.List;
@@ -28,8 +29,15 @@ public interface StudentDao {
     public LiveData<List<Student>> getAllStudent();
 
     @Query("SELECT * FROM students WHERE studentID=:studentID")
-    public LiveData<Student> getStudent(String studentID);
+    public LiveData<Student> getStudent(int studentID);
 
     @Query("SELECT name From students")
     public LiveData<List<String>> getByName();
+
+    @Query("SELECT name From students where studentID=:studentID")
+    public LiveData<String> getStudentName(int studentID);
+
+
+    @Query("SELECT students.name,visits.day,max(visitID) From students left join visits on students.studentID=visits.studentID group by students.studentID")
+    public LiveData<List<NextVisits>> getNextVisists();
 }

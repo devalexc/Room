@@ -7,7 +7,7 @@
 
         <variable
             name="presenter"
-            type="com.alejandrocorrero.room.ui.Main.MainActivity">
+            type="com.alejandrocorrero.room.ui.main.MainActivity">
 
         </variable>
 
@@ -20,7 +20,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.alejandrocorrero.room.ui.Main.MainActivity">
+            tools:context="com.alejandrocorrero.room.ui.main.MainActivity">
 
             <FrameLayout
                 android:id="@+id/frmList"

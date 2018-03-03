@@ -1,4 +1,4 @@
-package com.alejandrocorrero.room.ui.Student;
+package com.alejandrocorrero.room.utils;
 
 
 import android.databinding.BindingAdapter;
@@ -36,7 +36,7 @@ public  class GenericAdapter<T> extends RecyclerView.Adapter<GenericAdapter.View
     private View emptyView;
 
     // Constructor que recibe el BR item del Binding y el id del layout donde se efectua el binding
-    GenericAdapter(int modelBR, int layoutAdapterItem) {
+    public GenericAdapter(int modelBR, int layoutAdapterItem) {
         this.modelBRId = modelBR;
         this.layoutIdBinding = layoutAdapterItem;
     }
@@ -72,7 +72,7 @@ public  class GenericAdapter<T> extends RecyclerView.Adapter<GenericAdapter.View
     }
 
     // Metodo que asigna la lista al adaptador y notifica que se han cambiado los objetos
-    void setList(List<T> list) {
+    public void setList(List<T> list) {
         this.listClasePojo = list;
         notifyDataSetChanged();
         checkEmpty(list.size());

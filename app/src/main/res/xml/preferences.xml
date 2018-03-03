@@ -3,8 +3,10 @@
     <EditTextPreference
         android:key="prefDays"
         android:title="Visist notice each"
-        android:summary="test"
-        android:dialogTitle="@string/prefDays" />
+        android:dialogTitle="@string/prefDays"
+        android:inputType="number"
+        android:summary="@string/prefDays"
+        android:defaultValue="15"/>
 
     <ListPreference
         android:key="prefDefaultFrag"
@@ -13,5 +15,5 @@
         android:summary="@string/prefDefaultFrag"
         android:entries="@array/frags_entries"
         android:entryValues="@array/frags_values"
-        android:defaultValue="@array/frag_default" />
+        android:defaultValue="@string/frag_default" />
 </PreferenceScreen>

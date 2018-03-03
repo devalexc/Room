@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Main.MainActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,13 +19,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.FragmentCompanyList.Detail.DetailActivity"
-            android:parentActivityName=".ui.Main.MainActivity" />
-        <activity android:name=".ui.Main.PreferencesActivity" />
+            android:name=".ui.company.detail.DetailActivity"
+            android:parentActivityName=".ui.main.MainActivity" />
         <activity
-            android:name=".ui.About.AboutActivity"
+            android:name=".ui.main.PreferencesActivity"
+            android:parentActivityName=".ui.main.MainActivity" />
+        <activity
+            android:name=".ui.about.AboutActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
-        <activity android:name=".ui.Student.Detail.DetailStudentActivity"></activity>
+        <activity
+            android:name=".ui.student.detail.DetailStudentActivity"
+            android:parentActivityName=".ui.student.detail.DetailStudentActivity" />
+        <activity
+            android:name=".ui.visit.detail.DetailVisitActivity"
+            android:parentActivityName=".ui.visit.detail.DetailVisitActivity" />
     </application>
 
 </manifest>

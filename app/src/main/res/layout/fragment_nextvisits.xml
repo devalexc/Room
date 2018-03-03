@@ -2,15 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="presenter"
-            type="com.alejandrocorrero.room.ui.student.FragmentStudentsList" />
-    </data>
-
-
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,8 +15,6 @@
             android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"
-            app:onItemClick="@{(view, item, position) -> presenter.onItemClick(view, item, position)}"
-            app:onItemLongClick="@{(view, item, position) -> presenter.onItemLongClick(view, item, position)}"
             app:layoutManager="LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,8 +32,7 @@
             android:layout_marginBottom="@dimen/default_margin"
             android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginStart="@dimen/default_margin"
-            android:onClick="@{presenter::fabOnClick}"
-            android:text="@string/fragment_students_list_emptyView"
+            android:text="@string/fragment_visits_list_emptyView"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

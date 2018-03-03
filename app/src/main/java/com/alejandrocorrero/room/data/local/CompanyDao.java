@@ -31,5 +31,6 @@ public interface CompanyDao {
     public LiveData<Company> getCompany(String cif);
 
     @Query("SELECT name From companies")
-    public LiveData<List<String>> getByName();
+    public LiveData<List<String>> getCompaniesName();
+
 }

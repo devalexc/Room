@@ -1,4 +1,4 @@
-package com.alejandrocorrero.room.ui.Main;
+package com.alejandrocorrero.room.ui.main;
 
 
 import android.os.Bundle;
@@ -20,6 +20,10 @@ public class PreferencesActivity extends AppCompatActivity {
         getFragmentManager().beginTransaction()
                 .replace(R.id.flPreferences, new PreferencesFragment())
                 .commit();
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
 

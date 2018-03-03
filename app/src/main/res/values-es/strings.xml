@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Room</string>
+    <string name="app_name">FTC</string>
     <string name="activity_detail_lblname_text">Company Name</string>
     <string name="acitivity_detail_cif">CIF</string>
     <string name="activity_detail_address">Dirección</string>
@@ -10,7 +10,7 @@
     <string name="ItemFragment_snackbar_update">Empresa actualizada</string>
     <string name="ItemFragment_snackbar_add">Nueva empresa añadida</string>
     <string name="fragment_item_list_emptyView">Inserta una empresa</string>
-    <string name="fragment_item_inserted">"Empresa %1$s eliminada"</string>
+    <string name="fragment_item_remove">"Empresa %1$s eliminada"</string>
     <string name="fragment_item_undo">Deshacer</string>
     <string name="activity_detail_txtPerson">Persona de Contacto</string>
     <string name="activity_detail_txtLogo">Logo</string>
@@ -21,6 +21,8 @@
     <string name="activity_detail_txtName">Nombre</string>
     <string name="DetailActivity_error_inserting">Error insertando la empresa, el CIF ya existe</string>
     <string name="DetailActivity_error_updating">Error actualizando la empresa, revisa todos los campos</string>
+    <string name="DetailStudent_error_inserting">Error inserting the Student</string>
+    <string name="DetailStudent_error_updating">Error updating the Student check all values</string>
     <string name="binding_error_cif">CIF incorrecto</string>
     <string name="company_errorcif">CIF incorrecto</string>
     <string name="company_errorName">No puede estar vacio</string>
@@ -35,4 +37,5 @@
     <string name="mnuNextVisits">Next visits</string>
     <string name="activity_main_mnuAboutIt">About it</string>
     <string name="fragment_students_list_emptyView">Insert a student</string>
+    <string name="fragment_visits_list_emptyView">Insert a visit</string>
 </resources>

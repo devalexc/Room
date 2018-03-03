@@ -1,6 +1,5 @@
-package com.alejandrocorrero.room.ui.Main;
+package com.alejandrocorrero.room.ui.main;
 
-import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
@@ -37,6 +36,7 @@ public class PreferencesFragment extends PreferenceFragment implements SharedPre
     @Override
     public void onPause() {
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+
         super.onPause();
     }
 
