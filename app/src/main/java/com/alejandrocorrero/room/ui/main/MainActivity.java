@@ -21,7 +21,7 @@ import com.alejandrocorrero.room.ui.company.detail.DetailActivity;
 import com.alejandrocorrero.room.ui.company.CompanyFragment;
 import com.alejandrocorrero.room.ui.nextvisits.NextVisitsFragment;
 import com.alejandrocorrero.room.ui.student.detail.DetailStudentActivity;
-import com.alejandrocorrero.room.ui.student.FragmentStudentsList;
+import com.alejandrocorrero.room.ui.student.StudentFragment;
 import com.alejandrocorrero.room.ui.visit.detail.DetailVisitActivity;
 import com.alejandrocorrero.room.ui.visit.VisitFragment;
 import com.alejandrocorrero.room.utils.BottomNavigatorUtils;
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.mnuStudents:
                             if (fragmentManager.findFragmentByTag(TAG_FRAGMENT_STUDENT_LIST) == null) {
                                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                                transaction.replace(R.id.frmList, new FragmentStudentsList(), TAG_FRAGMENT_STUDENT_LIST);
+                                transaction.replace(R.id.frmList, new StudentFragment(), TAG_FRAGMENT_STUDENT_LIST);
                                 transaction.commit();
                             }
                             break;
@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 });
 
-        SharedPreferences preferencias = PreferenceManager.getDefaultSharedPreferences(this);
-        int defaultFrag = Integer.valueOf(preferencias.getString("prefDefaultFrag","1"));
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int defaultFrag = Integer.valueOf(preferences.getString("prefDefaultFrag","1"));
         int frag=R.id.mnuNextVisits;
         switch (defaultFrag) {
             case 1:
@@ -142,9 +142,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (Objects.equals(getSupportFragmentManager().findFragmentById(R.id.frmList).getTag(), TAG_FRAGMENT_STUDENT_LIST)) {
             startActivityForResult(new Intent(this, DetailStudentActivity.class), 3);
         } else if (Objects.equals(getSupportFragmentManager().findFragmentById(R.id.frmList).getTag(), TAG_FRAGMENT_VISIT_LIST)) {
-            startActivityForResult(new Intent(this, DetailVisitActivity.class), 3);
+            startActivityForResult(new Intent(this, DetailVisitActivity.class), 4);
         } else if (Objects.equals(getSupportFragmentManager().findFragmentById(R.id.frmList).getTag(), TAG_FRAGMENT_NEXT_VISITS_LIST)) {
-            startActivityForResult(new Intent(this, DetailVisitActivity.class), 3);
+            startActivityForResult(new Intent(this, DetailVisitActivity.class), 4);
         }
     }
 
@@ -154,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
             Light.success(mbinding.navigation, getResources().getString(R.string.ItemFragment_snackbar_add), Snackbar.LENGTH_SHORT).show();
         } else if (resultCode == RESULT_OK && requestCode == 3) {
             Light.success(mbinding.navigation, getResources().getString(R.string.FragmentStudent_snackbar_add), Snackbar.LENGTH_SHORT).show();
+        } else if (resultCode == RESULT_OK && requestCode == 4) {
+            Light.success(mbinding.navigation, getResources().getString(R.string.FragmentVisit_snackbar_add), Snackbar.LENGTH_SHORT).show();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

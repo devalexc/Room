@@ -91,7 +91,7 @@ public class DetailStudentActivity extends AppCompatActivity {
                         mbinding.lblStartSchedule.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
-                mTimePicker.setTitle("Select Time");
+                mTimePicker.setTitle(getString(R.string.Select_time_picker));
                 mTimePicker.show();
             }
         });
@@ -108,7 +108,7 @@ public class DetailStudentActivity extends AppCompatActivity {
                         mbinding.lblEndSchedule.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
-                mTimePicker.setTitle("Select Time");
+                mTimePicker.setTitle(getString(R.string.Select_time_picker));
                 mTimePicker.show();
             }
         });

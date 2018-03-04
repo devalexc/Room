@@ -3,4 +3,6 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="default_margin">8dp</dimen>
     <dimen name="fragment_item_ivIcon_Size">48dp</dimen>
+    <dimen name="activity_detail_student_separatorSize">14sp</dimen>
+    <dimen name="endschedule_padding">5dp</dimen>
 </resources>

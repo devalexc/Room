@@ -31,6 +31,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         db = DBrepository.getInstance(application.getApplicationContext());
 
     }
+
     public LiveData<List<Visit>> getVisits() {
         if (visits == null) {
             visits = db.getVisits();
@@ -38,6 +39,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
         return visits;
     }
+
     public LiveData<List<Company>> getCompanies() {
         if (companies == null) {
             companies = db.getCompanies();
@@ -45,6 +47,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
         return companies;
     }
+
     public LiveData<List<Student>> getStudents() {
         if (students == null) {
             students = db.getStudents();
@@ -61,6 +64,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         }
 
     }
+
     public long insertStudent(Student student) {
         try {
             return db.insertStudent(student);
@@ -69,6 +73,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         }
 
     }
+
     public long insertVisit(Visit visit) {
         try {
             return db.insertVisit(visit);
@@ -79,17 +84,32 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
 
-    public void deleteCompany(Company company) {
-        db.deleteCompany(company);
-    }
-    public void deleteStudent(Student student) {
-        db.deleteStudent(student);
-    }
-    public void deleteVisit(Visit visit) {
-        db.deleteVisit(visit);
+    public int deleteCompany(Company company) {
+        try {
+            return db.deleteCompany(company);
+        } catch (SQLiteConstraintException e) {
+            return 0;
+        }
+
     }
 
-    public LiveData<List<NextVisits>> getNextVisits(){
+    public int deleteStudent(Student student) {
+        try {
+            return db.deleteStudent(student);
+        } catch (SQLiteConstraintException e) {
+            return 0;
+        }
+    }
+
+    public int deleteVisit(Visit visit) {
+        try {
+            return db.deleteVisit(visit);
+        } catch (SQLiteConstraintException e) {
+            return 0;
+        }
+    }
+
+    public LiveData<List<NextVisits>> getNextVisits() {
         if (nextVisits == null) {
             nextVisits = db.getNextVisits();
         }

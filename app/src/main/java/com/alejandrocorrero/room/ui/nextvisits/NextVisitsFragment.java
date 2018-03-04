@@ -32,7 +32,7 @@ import java.util.Locale;
 
 public class NextVisitsFragment extends Fragment {
     private MainActivityViewModel viewModel;
-    private GenericAdapter adapter;
+    private GenericAdapter<NextVisits> adapter;
     private FragmentVisitBinding binding;
 
 
@@ -65,7 +65,7 @@ public class NextVisitsFragment extends Fragment {
 
         for (NextVisits visits : nextVisits) {
             if (visits.getDay() == null)
-                visits.nextDay = "Make first vist";
+                visits.nextDay = getString(R.string.nextVisitsfragment_first_visit);
             else {
                 DateFormat format = new SimpleDateFormat("d/M/yyyy", Locale.ENGLISH);
                 Date date = new Date();

@@ -89,7 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="Last Name"
+                        android:hint="@string/activity_detail_student_last_name"
                         android:text="@={model.lastName}" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -173,26 +173,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/default_margin"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="@dimen/default_margin"
 
+                    android:layout_marginTop="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivName"
-                    app:layout_constraintTop_toBottomOf="@+id/tilEmail">
+                    app:layout_constraintTop_toBottomOf="@+id/lblCompany">
 
                 </Spinner>
-
-                <ImageView
-                    android:id="@+id/ivCompany"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/default_margin"
-                    android:layout_marginStart="@dimen/default_margin"
-                    android:layout_marginTop="@dimen/default_margin"
-                    app:layout_constraintBottom_toTopOf="@+id/tilTutor"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/spnCompany"
-                    app:srcCompat="@drawable/ic_business_black_24dp"
-                    tools:ignore="ContentDescription" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/tilTutor"
@@ -211,7 +198,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="Tutor"
+                        android:hint="@string/activity_detail_student_txttutor"
                         android:inputType="textPersonName"
                         android:text="@={model.nameTutor}" />
                 </android.support.design.widget.TextInputLayout>
@@ -247,7 +234,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="Tutor phone"
+                        android:hint="@string/activity_detail_student_txttutorphone"
                         android:inputType="phone"
                         android:text="@={model.phoneTutor}" />
                 </android.support.design.widget.TextInputLayout>
@@ -256,7 +243,7 @@
                     android:id="@+id/ivPhoneTutor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="@dimen/default_margin"
                     android:layout_marginStart="@dimen/default_margin"
                     android:layout_marginTop="@dimen/default_margin"
                     app:layout_constraintBottom_toBottomOf="@+id/tilPhoneTutor"
@@ -270,10 +257,10 @@
                     android:id="@+id/lblStartSchedule"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
                     android:ems="10"
-                    android:hint="Select start Time..."
+                    android:hint="@string/select_start_time"
                     android:padding="5dp"
                     android:text="@={model.startHour}"
                     android:textAlignment="center"
@@ -291,11 +278,11 @@
                     android:id="@+id/lblEndSchedule"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
                     android:ems="10"
-                    android:hint="Select end Time..."
-                    android:padding="5dp"
+                    android:hint="@string/select_end_time"
+                    android:padding="@dimen/endschedule_padding"
                     android:text="@={model.endHour}"
                     android:textAlignment="center"
                     android:textColor="#090"
@@ -311,10 +298,10 @@
                     android:id="@+id/lblWorkSchedule"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Work Schedule"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:text="@string/activity_detail_student_txtwork_schedule"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -326,13 +313,13 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="-"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:text="@string/separator"
                     android:textAlignment="center"
                     android:textColor="#090"
                     android:textColorHint="#090"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/activity_detail_student_separatorSize"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/lblEndSchedule"
                     app:layout_constraintEnd_toStartOf="@+id/lblEndSchedule"
@@ -340,6 +327,19 @@
                     app:layout_constraintStart_toEndOf="@+id/lblStartSchedule"
                     app:layout_constraintTop_toBottomOf="@+id/lblWorkSchedule"
                     app:layout_constraintVertical_bias="0.535" />
+
+                <TextView
+                    android:id="@+id/lblCompany"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/activity_detail_student_lbl_company"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivPhone"
+                    app:layout_constraintTop_toBottomOf="@+id/tilEmail" />
 
 
             </android.support.constraint.ConstraintLayout>

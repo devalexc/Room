@@ -31,11 +31,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/default_margin"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="@dimen/default_margin"
                 android:text="@{student.name}"
                 app:layout_constraintEnd_toEndOf="parent"
-
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
             <ImageView
@@ -46,10 +47,11 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_person_black_24dp" />
+                app:srcCompat="@drawable/ic_person_black_24dp"
+                card_view:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/lblPhone"
+                android:id="@+id/lblPhoneStudent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -58,6 +60,16 @@
                 android:text="@{student.phone}"
                 android:textAlignment="viewStart"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lblPhone"
+                app:layout_constraintTop_toBottomOf="@+id/lblName" />
+
+            <TextView
+                android:id="@+id/lblPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/fragment_student_list_item_lblphone"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/lblName" />
 

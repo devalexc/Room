@@ -15,10 +15,8 @@ import java.util.List;
 class DetailStudentActivityViewModel extends AndroidViewModel {
 
     private final DBrepository db;
-    private LiveData<List<String>> companyName;
     private LiveData<Student> student;
     private LiveData<List<Company>> companies;
-    private LiveData<Company> company;
 
     public DetailStudentActivityViewModel(@NonNull Application application) {
         super(application);
@@ -26,12 +24,6 @@ class DetailStudentActivityViewModel extends AndroidViewModel {
 
     }
 
-    LiveData<List<String>> getCompaniesName() {
-        if (companyName == null) {
-            companyName = db.getCompaniesName();
-        }
-        return companyName;
-    }
     public LiveData<List<Company>> getCompanies() {
         if (companies == null) {
             companies = db.getCompanies();
@@ -45,12 +37,6 @@ class DetailStudentActivityViewModel extends AndroidViewModel {
             student = db.getStudent(studentId);
         }
         return student;
-    }
-    LiveData<Company> getCompany(String CIF) {
-        if (company == null) {
-            company = db.getCompany(CIF);
-        }
-        return company;
     }
 
     int updateStudent(Student student) {

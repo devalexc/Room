@@ -38,6 +38,6 @@ public interface StudentDao {
     public LiveData<String> getStudentName(int studentID);
 
 
-    @Query("SELECT students.name,visits.day,max(visitID) From students left join visits on students.studentID=visits.studentID group by students.studentID")
+    @Query("SELECT (students.name || ' ' || students.lastName)as name,visits.day,max(visitID) From students left join visits on students.studentID=visits.studentID group by students.studentID")
     public LiveData<List<NextVisits>> getNextVisists();
 }

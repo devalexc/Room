@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.alejandrocorrero.room.BR;
 import com.alejandrocorrero.room.R;
+import com.alejandrocorrero.room.data.model.Company;
 import com.alejandrocorrero.room.data.model.Student;
 import com.alejandrocorrero.room.databinding.FragmentStudentsListBinding;
 import com.alejandrocorrero.room.ui.main.MainActivityViewModel;
@@ -25,12 +26,15 @@ import com.alejandrocorrero.room.utils.GenericAdapter;
 import java.util.List;
 
 import io.github.tonnyl.light.Light;
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 import static android.app.Activity.RESULT_OK;
 
-public class FragmentStudentsList extends Fragment {
+public class StudentFragment extends Fragment {
     private MainActivityViewModel viewModel;
-    private GenericAdapter adapter;
+    private GenericAdapter<Student> adapter;
     private FragmentStudentsListBinding binding;
 
 
@@ -47,7 +51,7 @@ public class FragmentStudentsList extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentStudentsListBinding.inflate(inflater, container, false);
         binding.setPresenter(this);
-        adapter = new GenericAdapter<Student>(BR.student, R.layout.fragment_students_list_item);
+        adapter = new GenericAdapter<>(BR.student, R.layout.fragment_students_list_item);
         RecyclerView recyclerView = binding.list;
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
@@ -88,11 +92,18 @@ public class FragmentStudentsList extends Fragment {
 
 
     public boolean onItemLongClick(View view, Object item, int position) {
-        new Thread(() -> viewModel.deleteStudent((Student) item)).start();
-        Light.success(binding.lblEmpty, String.format(getResources().getString(R.string.FragmentStudent_removed), ((Student) item).getName()), Snackbar.LENGTH_LONG)
-                .setAction(getResources().getString(R.string.fragment_item_undo), v -> new Thread(() -> viewModel.insertStudent((Student) item)).start()).show();
-
-
+        Student student = (Student) item;
+        Single<Integer> result = Single.create(emitter -> emitter.onSuccess(viewModel.deleteStudent(student)));
+        result.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(t -> deleteStudent(t, student));
         return true;
+
+    }
+
+    private void deleteStudent(int result, Student student) {
+        if (result == 0)
+            Light.error(binding.lblEmpty,getResources().getString(R.string.student_fragment_undo_error), Snackbar.LENGTH_SHORT).show();
+        else
+            Light.success(binding.lblEmpty, String.format(getResources().getString(R.string.FragmentStudent_removed), student.getName()), Snackbar.LENGTH_LONG)
+                    .setAction(getResources().getString(R.string.undo), v -> new Thread(() -> viewModel.insertStudent(student)).start()).show();
     }
 }

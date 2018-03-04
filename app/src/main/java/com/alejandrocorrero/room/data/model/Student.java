@@ -12,16 +12,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
 import android.view.View;
-import android.webkit.URLUtil;
-import android.widget.ImageView;
 
 import com.alejandrocorrero.room.BR;
 import com.alejandrocorrero.room.R;
-import com.alejandrocorrero.room.utils.Utils;
-import com.squareup.picasso.Picasso;
+
+import static android.arch.persistence.room.ForeignKey.*;
 
 
-@Entity(tableName = "students", foreignKeys = @ForeignKey(entity = Company.class, parentColumns = "CIF", childColumns = "companyCIF"))
+@Entity(tableName = "students", foreignKeys = @ForeignKey(entity = Company.class, parentColumns = "CIF", childColumns = "companyCIF",onDelete = NO_ACTION))
 public class Student extends BaseObservable {
 
 

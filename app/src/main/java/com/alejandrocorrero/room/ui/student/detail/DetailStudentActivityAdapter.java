@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alejandrocorrero.room.R;
@@ -87,6 +88,7 @@ public class DetailStudentActivityAdapter extends BaseAdapter {
 
         public ViewHolder(View itemView) {
             lblName = itemView.findViewById(R.id.lblName);
+
         }
 
         public void bind(Company company) {

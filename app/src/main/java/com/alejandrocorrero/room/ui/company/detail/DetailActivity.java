@@ -10,7 +10,8 @@ import android.view.View;
 
 import com.alejandrocorrero.room.R;
 import com.alejandrocorrero.room.data.model.Company;
-import com.alejandrocorrero.room.databinding.ActivityDetailBinding;
+
+import com.alejandrocorrero.room.databinding.ActivityDetailCompanyBinding;
 
 
 import io.github.tonnyl.light.Light;
@@ -22,14 +23,14 @@ public class DetailActivity extends AppCompatActivity {
 
 
     private DetailActivityViewModel viewModel;
-    private ActivityDetailBinding mbinding;
+    private ActivityDetailCompanyBinding mbinding;
     private Company company = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mbinding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
+        mbinding = DataBindingUtil.setContentView(this, R.layout.activity_detail_company);
         viewModel = ViewModelProviders.of(this).get(DetailActivityViewModel.class);
         Intent intennt = getIntent();
         if (intennt != null) {

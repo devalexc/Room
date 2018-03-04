@@ -13,24 +13,31 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.alejandrocorrero.room.BR;
 import com.alejandrocorrero.room.R;
 import com.alejandrocorrero.room.data.model.Company;
-import com.alejandrocorrero.room.databinding.FragmentItemListBinding;
+import com.alejandrocorrero.room.databinding.FragmentCompanyListBinding;
 import com.alejandrocorrero.room.ui.company.detail.DetailActivity;
 import com.alejandrocorrero.room.ui.main.MainActivityViewModel;
+import com.alejandrocorrero.room.utils.GenericAdapter;
 
 import java.util.List;
+
 import io.github.tonnyl.light.Light;
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 import static android.app.Activity.RESULT_OK;
 
 
-public class CompanyFragment extends Fragment implements CompanyFragmentAdapter.Callback {
+public class CompanyFragment extends Fragment {
 
 
     private MainActivityViewModel viewModel;
-    private CompanyFragmentAdapter adapter;
-    private FragmentItemListBinding binding;
-
+    private GenericAdapter<Company> adapter;
+    private FragmentCompanyListBinding binding;
 
 
     @Override
@@ -44,9 +51,9 @@ public class CompanyFragment extends Fragment implements CompanyFragmentAdapter.
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentItemListBinding.inflate(inflater, container, false);
+        binding = FragmentCompanyListBinding.inflate(inflater, container, false);
         binding.setPresenter(this);
-        adapter = new CompanyFragmentAdapter(this);
+        adapter = new GenericAdapter<>(BR.item, R.layout.fragment_company_list_item);
         RecyclerView recyclerView = binding.list;
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
@@ -60,7 +67,6 @@ public class CompanyFragment extends Fragment implements CompanyFragmentAdapter.
 
     private void setupRecycleList(List<Company> companies) {
         adapter.setList(companies);
-        binding.lblEmpty.setVisibility(companies.size() == 0 ? View.VISIBLE : View.INVISIBLE);
 
     }
 
@@ -69,21 +75,27 @@ public class CompanyFragment extends Fragment implements CompanyFragmentAdapter.
     }
 
 
-    @Override
-    public void onItemClick(Company company) {
+    public void onItemClick(View view, Object item, int position) {
         Intent intent = new Intent(getActivity(), DetailActivity.class);
-        intent.putExtra("PrimaryKey", company.getCIF());
+        intent.putExtra("PrimaryKey", ((Company) item).getCIF());
         startActivityForResult(intent, 1);
 
     }
 
-    @Override
-    public void onLongItemClick(Company company) {
-        new Thread(() -> viewModel.deleteCompany(company)).start();
-        Light.success(binding.lblEmpty, String.format(getResources().getString(R.string.fragment_item_remove), company.getName()), Snackbar.LENGTH_LONG)
-                .setAction(getResources().getString(R.string.fragment_item_undo), v -> new Thread(() -> viewModel.insertCompany(company)).start()).show();
+    public boolean onItemLongClick(View view, Object item, int position) {
+        Company company = (Company) item;
+        Single<Integer> result = Single.create(emitter -> emitter.onSuccess(viewModel.deleteCompany(company)));
+        result.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(t -> deleteCompany(t, company));
+        return true;
 
+    }
 
+    private void deleteCompany(int result, Company company) {
+        if (result == 0)
+            Light.error(binding.lblEmpty,getResources().getString(R.string.company_fragment_undo_error), Snackbar.LENGTH_SHORT).show();
+        else
+            Light.success(binding.lblEmpty, String.format(getResources().getString(R.string.fragment_item_remove), company.getName()), Snackbar.LENGTH_LONG)
+                    .setAction(getResources().getString(R.string.undo), v -> new Thread(() -> viewModel.insertCompany(company)).start()).show();
     }
 
     @Override

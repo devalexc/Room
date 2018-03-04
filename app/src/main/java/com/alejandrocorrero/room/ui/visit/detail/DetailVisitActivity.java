@@ -32,8 +32,8 @@ public class DetailVisitActivity extends AppCompatActivity {
     private ActivityDetailVisitBinding mbinding;
     private DetailVisitActivityAdapter adapter;
     private DetailVisitActivityViewModel viewModel;
-    private Visit visit=null;
-    private List<Student> students= new  ArrayList<>();
+    private Visit visit = null;
+    private List<Student> students = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,11 @@ public class DetailVisitActivity extends AppCompatActivity {
         mbinding = DataBindingUtil.setContentView(this, R.layout.activity_detail_visit);
         mbinding.setPresenter(this);
         viewModel = ViewModelProviders.of(this).get(DetailVisitActivityViewModel.class);
+        setupPickers();
+        setupAdapter();
+    }
+
+    private void setupPickers() {
         mbinding.startTimeSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +59,7 @@ public class DetailVisitActivity extends AppCompatActivity {
                         mbinding.startTimeSelect.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);
-                mTimePicker.setTitle("Select Time");
+                mTimePicker.setTitle(getString(R.string.Select_time_picker));
                 mTimePicker.show();
             }
         });
@@ -70,10 +75,10 @@ public class DetailVisitActivity extends AppCompatActivity {
                 mDatePicker = new DatePickerDialog(DetailVisitActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        mbinding.daySelect.setText(i2 + "/" + (i1+1) + "/" + i);
+                        mbinding.daySelect.setText(i2 + "/" + (i1 + 1) + "/" + i);
                     }
                 }, year, month, day);
-                mDatePicker.setTitle("Select Date");
+                mDatePicker.setTitle(getString(R.string.Select_date_picker));
                 mDatePicker.show();
             }
         });
@@ -90,12 +95,10 @@ public class DetailVisitActivity extends AppCompatActivity {
                         mbinding.endTimeSelect.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);
-                mTimePicker.setTitle("Select Time");
+                mTimePicker.setTitle(getString(R.string.Select_time_picker));
                 mTimePicker.show();
             }
         });
-
-        setupAdapter();
     }
 
 
@@ -106,11 +109,9 @@ public class DetailVisitActivity extends AppCompatActivity {
         mbinding.spnStundet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                visit.setStudentID(((Student) mbinding.spnStundet.getItemAtPosition(i)).getStudentID());
-
-                viewModel.getStudentName(visit.getStudentID()).observe(DetailVisitActivity.this,s -> visit.setStudentName(s));
-
-
+                Student std = ((Student) mbinding.spnStundet.getItemAtPosition(i));
+                visit.setStudentID(std.getStudentID());
+                visit.setStudentName(std.getName() + " " + std.getLastName());
             }
 
             @Override
@@ -139,8 +140,8 @@ public class DetailVisitActivity extends AppCompatActivity {
         this.visit = visit;
 
         mbinding.setModel(visit);
-        for (Student std:students){
-            if (std.getStudentID()==visit.getStudentID()){
+        for (Student std : students) {
+            if (std.getStudentID() == visit.getStudentID()) {
 
                 mbinding.spnStundet.setSelection(students.indexOf(std));
             }
@@ -153,7 +154,9 @@ public class DetailVisitActivity extends AppCompatActivity {
         adapter.setList(students);
         this.students = students;
 
-    }public void fabOnClick(View v) {
+    }
+
+    public void fabOnClick(View v) {
         if (visit.getVisitID() > 0) {
             Single<Integer> result = Single.create(emitter -> emitter.onSuccess(viewModel.updateVisit(visit)));
             result.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(this::updateVisit);
@@ -164,20 +167,21 @@ public class DetailVisitActivity extends AppCompatActivity {
 
 
     }
+
     private void updateVisit(int resultCode) {
         if (resultCode == 1) {
             Intent result = new Intent();
             setResult(RESULT_OK, result);
             finish();
         } else {
-            Light.error(mbinding.fab, getString(R.string.DetailStudent_error_updating), Snackbar.LENGTH_LONG).show();
+            Light.error(mbinding.fab, getString(R.string.DetailVisit_error_updating), Snackbar.LENGTH_LONG).show();
 
         }
     }
 
     private void insertVisit(long resultCode) {
         if (resultCode == 0) {
-            Light.error(mbinding.fab, getString(R.string.DetailStudent_error_inserting), Snackbar.LENGTH_LONG).show();
+            Light.error(mbinding.fab, getString(R.string.DetailVisit_error_inserting), Snackbar.LENGTH_LONG).show();
 
         } else {
             Intent result = new Intent();
@@ -186,6 +190,7 @@ public class DetailVisitActivity extends AppCompatActivity {
 
         }
     }
+
     @Override
     public void onBackPressed() {
         finish();

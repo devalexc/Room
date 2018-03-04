@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="frags_entries" >
-        <item>Next Visits</item>
-        <item>Visits per Student</item>
-        <item>Students</item>
-        <item>Companies</item>
+        <item>Proximas Visitas</item>
+        <item>Visitas</item>
+        <item>Alumnos</item>
+        <item>Empresas</item>
     </string-array>
     <string-array name="frags_values">
         <item>1</item>

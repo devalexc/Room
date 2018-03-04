@@ -18,8 +18,8 @@ public class DetailVisitActivityAdapter extends BaseAdapter {
     private final LayoutInflater mLayoutInflater;
     private List<Student> mData= new ArrayList<>();
 
-    public DetailVisitActivityAdapter(Context contexto) {
-        mLayoutInflater = LayoutInflater.from(contexto);
+    public DetailVisitActivityAdapter(Context context) {
+        mLayoutInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class DetailVisitActivityAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.activity_detail_student_item, parent,
+            convertView = mLayoutInflater.inflate(R.layout.activity_detail_visit_item, parent,
                     false);
             viewHolder = onCreateViewHolder(convertView);
             convertView.setTag(viewHolder);
@@ -70,7 +70,7 @@ public class DetailVisitActivityAdapter extends BaseAdapter {
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.activity_detail_student_item, parent,
+            convertView = mLayoutInflater.inflate(R.layout.activity_detail_visit_item, parent,
                     false);
             viewHolder = onCreateViewHolder(convertView);
             convertView.setTag(viewHolder);
@@ -91,7 +91,7 @@ public class DetailVisitActivityAdapter extends BaseAdapter {
         }
 
         public void bind(Student student) {
-            lblName.setText(student.getName());
+            lblName.setText(student.getName()+" "+student.getLastName());
         }
 
     }
