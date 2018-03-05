@@ -69,7 +69,11 @@
     <string name="activity_detail_visit_observations">Observations</string>
     <string name="fragment_nextvisitss_list_item_next_visit">Next Visit:</string>
     <string name="nextVisitsfragment_first_visit">Make first vist</string>
-    <string name="preferences_Default_screen">Default visit screen</string>
+    <string name="preferences_Default_screen">Number of days between each visit</string>
     <string name="activity_about_lblabout">Made by Alejandro correro @2018</string>
+    <string name="activity_preferences_label">Preferences</string>
+    <string name="activity_student_label">Student</string>
+    <string name="activity_visit">Visit</string>
+    <string name="activity_company_label">Company</string>
 
 </resources>

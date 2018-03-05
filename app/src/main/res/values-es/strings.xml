@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">FTC</string>
-    <string name="activity_detail_lblname_text">Company Name</string>
+    <string name="activity_detail_lblname_text">Nombre de la empresa</string>
     <string name="acitivity_detail_cif">CIF</string>
     <string name="activity_detail_address">Dirección</string>
     <string name="activity_detail_phone">Teléfono</string>
@@ -67,9 +67,13 @@
     <string name="fragment_nextvisitss_list_item_next_visit">Proxima Visita:</string>
     <string name="visit_fragment_undo_error">Visit esta en uso</string>
     <string name="nextVisitsfragment_first_visit">Hacer visita inicial</string>
-    <string name="preferences_Default_screen">Pantalla principal</string>
+    <string name="preferences_Default_screen">Numero de días entre cada visita</string>
     <string name="prefDays">Días para la proxima visita</string>
     <string name="activity_about_lblabout">Hecho por Alejandro correro @2018</string>
+    <string name="activity_preferences_label">Preferencias</string>
+    <string name="activity_student_label">Alumno</string>
+    <string name="activity_visit">Visita</string>
+    <string name="activity_company_label">Empresa</string>
 
 
 </resources>

@@ -19,19 +19,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.company.detail.DetailActivity"
+            android:name=".ui.company.detail.DetailActivity" android:label="@string/activity_company_label"
             android:parentActivityName=".ui.main.MainActivity" />
         <activity
-            android:name=".ui.main.PreferencesActivity"
+            android:name=".ui.main.PreferencesActivity" android:label="@string/activity_preferences_label"
             android:parentActivityName=".ui.main.MainActivity" />
         <activity
             android:name=".ui.about.AboutActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity
-            android:name=".ui.student.detail.DetailStudentActivity"
+            android:name=".ui.student.detail.DetailStudentActivity" android:label="@string/activity_student_label"
             android:parentActivityName=".ui.student.detail.DetailStudentActivity" />
         <activity
-            android:name=".ui.visit.detail.DetailVisitActivity"
+            android:name=".ui.visit.detail.DetailVisitActivity" android:label="@string/activity_visit"
             android:parentActivityName=".ui.visit.detail.DetailVisitActivity" />
     </application>
 
